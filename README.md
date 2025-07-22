@@ -58,71 +58,85 @@ La estructura básica del comando es: ` ./wwlc.py <URL> [opciones]`
 
 ### Desglose de Opciones (Flags)
 
+A continuación se explican todos los argumentos que puedes usar para personalizar la extracción de datos.
+
 * `URL` (Requerido)
-    _El único argumento obligatorio. Es la dirección del sitio web que quieres analizar._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com)
-    ```
+    * **Descripción**: El único argumento obligatorio. Es la dirección del sitio web que quieres analizar.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python
+        ```
 
 * `-o, --output <archivo>`
-    _Guarda la lista de palabras principal en el archivo especificado. Si no se usa, el script creará un archivo `wordlist.txt` por defecto._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com) -o mi_diccionario.txt
-    ```
+    * **Descripción**: Guarda la lista de palabras principal en el archivo especificado. Si no se usa, el script creará un archivo `wordlist.txt` por defecto.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python -o mi_diccionario.txt
+        ```
 
 * `-e, --email`
-    _Activa la extracción de correos electrónicos. El script buscará correos en el texto, en los enlaces `mailto:` y en las respuestas de las APIs._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com) -e --email-file correos.txt
-    ```
+    * **Descripción**: Activa la extracción de correos electrónicos. El script buscará correos en el texto, en los enlaces `mailto:` y en las respuestas de las APIs.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python -e --email-file correos.txt
+        ```
 
 * `--email-file <archivo>`
-    _Especifica el archivo donde se guardarán los correos encontrados. **Requiere que el flag `-e` esté activado**._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com) -e --email-file emails_encontrados.txt
-    ```
+    * **Descripción**: Especifica el archivo donde se guardarán los correos encontrados. **Requiere que el flag `-e` esté activado**.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python -e --email-file emails_encontrados.txt
+        ```
 
 * `-a, --meta`
-    _Activa la extracción de metadatos de documentos (actualmente soporta `.pdf`). El script descargará los archivos y buscará información como el autor._
-    ```bash
-    ./wwlc.py [https://sitio-con-pdfs.com](https://sitio-con-pdfs.com) -a --meta-file usuarios.txt
-    ```
+    * **Descripción**: Activa la extracción de metadatos de documentos (actualmente soporta `.pdf`). El script descargará los archivos y buscará información como el autor.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python -a --meta-file usuarios.txt
+        ```
 
 * `--meta-file <archivo>`
-    _Especifica el archivo donde se guardarán las palabras extraídas de los metadatos. **Requiere que el flag `-a` esté activado**._
-    ```bash
-    ./wwlc.py [https://sitio-con-pdfs.com](https://sitio-con-pdfs.com) -a --meta-file meta_palabras.txt
-    ```
+    * **Descripción**: Especifica el archivo donde se guardarán las palabras extraídas de los metadatos. **Requiere que el flag `-a` esté activado**.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python -a --meta-file meta_palabras.txt
+        ```
 
 * `--min-length <número>`
-    _Filtra la lista de palabras final para incluir solo aquellas con una longitud mínima. El valor por defecto es 3._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com) --min-length 5
-    ```
+    * **Descripción**: Filtra la lista de palabras final para incluir solo aquellas con una longitud mínima. El valor por defecto es 3.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python --min-length 5
+        ```
 
 * `--max-length <número>`
-    _Filtra la lista de palabras final para incluir solo aquellas con una longitud máxima. El valor por defecto es 20._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com) --max-length 10
-    ```
+    * **Descripción**: Filtra la lista de palabras final para incluir solo aquellas con una longitud máxima. El valor por defecto es 20.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python --max-length 10
+        ```
 
 * `--no-split`
-    _Desactiva la función de dividir palabras compuestas (ej: "passwordseguro" no se dividirá en "password" y "seguro")._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com) --no-split
-    ```
+    * **Descripción**: Desactiva la función de dividir palabras compuestas (ej: "passwordseguro" no se dividirá en "password" y "seguro").
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Pytho --no-split
+        ```
 
 * `--no-variations`
-    _Desactiva la generación de variaciones simples (ej: a "palabra" no se le añadirán números como "palabra2025")._
-    ```bash
-    ./wwlc.py [https://ejemplo.com](https://ejemplo.com) --no-variations
-    ```
+    * **Descripción**: Desactiva la generación de variaciones simples (ej: a "palabra" no se le añadirán números como "palabra2025").
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py https://github.com/Cyberdark-Security/WWLC-Python --no-variations
+        ```
 
 * `--help`
-    _Muestra el menú de ayuda con todas las opciones disponibles._
-    ```bash
-    ./wwlc.py --help
-    ```
+    * **Descripción**: Muestra el menú de ayuda con todas las opciones disponibles.
+    * **Ejemplo**:
+        ```bash
+        ./wwlc.py --help
+        ```
 ---
 
-##
+## 📄 Licencia
+Este proyecto está bajo la Licencia MIT.
