@@ -1,10 +1,10 @@
-# 🐍 WWLC - Web Wordlist Creator (v1.0)
+#  WWLC - Web Wordlist Creator (v1.0)
 
 **WWLC (Web Wordlist Creator)** es una herramienta avanzada escrita en **Python** para generar diccionarios de palabras personalizados a partir de sitios web. Diseñada para tareas de reconocimiento, WWLC destaca por su capacidad de extraer contenido dinámico y datos ocultos, superando las limitaciones de los scrapers tradicionales.
 
 ---
 
-## 🌟 Características Principales
+##  Características Principales
 
 - **Análisis Dinámico**: Utiliza **Playwright** para renderizar JavaScript y extraer contenido de aplicaciones web modernas.
 - **Intercepción de APIs**: Captura respuestas de APIs en formato JSON para descubrir datos adicionales.
@@ -19,7 +19,7 @@
 
 ---
 
-## 🛠️ Instalación
+##  Instalación
 
 WWLC v1.0 está optimizado para entornos como **Kali Linux** y otras distribuciones basadas en Debian/Ubuntu. Sigue estos pasos para instalar la herramienta.
 
@@ -58,7 +58,7 @@ playwright install
 
 ---
 
-## 🚀 Uso
+##  Uso
 
 Ejecuta WWLC con el comando:
 ```bash
@@ -83,7 +83,7 @@ Ejecuta WWLC con el comando:
 
 ---
 
-## 📋 Ejemplo Completo
+##  Ejemplo Completo
 
 Para analizar un sitio, extraer correos, metadatos y generar una lista de palabras con longitud mínima de 5 caracteres:
 ```bash
@@ -92,7 +92,7 @@ Para analizar un sitio, extraer correos, metadatos y generar una lista de palabr
 
 ---
 
-## 🛠️ Solución de Problemas
+##  Solución de Problemas
 
 Si encuentras errores durante la instalación o ejecución, consulta las soluciones comunes a continuación:
 
@@ -131,7 +131,7 @@ Asegúrate de estar en el entorno virtual (`source venv/bin/activate`) y prueba 
 
 ---
 
-## ⚠️ Notas Importantes
+##  Notas Importantes
 
 - **Uso Ético**: WWLC v1.0 está diseñado para pruebas de seguridad autorizadas. Úsalo solo en sitios web donde tengas permiso explícito.
 - **Rendimiento**: El rastreo profundo y la extracción de APIs pueden consumir tiempo y recursos en sitios grandes.
@@ -139,13 +139,13 @@ Asegúrate de estar en el entorno virtual (`source venv/bin/activate`) y prueba 
 
 ---
 
-## 📜 Licencia
+##  Licencia
 
 Este proyecto está licenciado bajo la **Licencia MIT**. Consulta el archivo `LICENSE` para más detalles.
 
 ---
 
-## 🤝 Contribuciones
+##  Contribuciones
 
 ¡Contribuye al proyecto! Si tienes ideas, mejoras o encuentras errores:
 1. Crea un *issue* en el repositorio.
@@ -153,6 +153,6 @@ Este proyecto está licenciado bajo la **Licencia MIT**. Consulta el archivo `LI
 
 ---
 
-## 📬 Contacto
+##  Contacto
 
 Para soporte o consultas, contacta al equipo de **Cyberdark Security** a través de nuestro [repositorio en GitHub](https://github.com/Cyberdark-Security/WWLC-Python).
