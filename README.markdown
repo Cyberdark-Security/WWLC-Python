@@ -21,51 +21,40 @@
 
 ## 🛠️ Instalación
 
-WWLC v1.0 está optimizado para entornos como **Kali Linux** y otras distribuciones basadas en Debian/Ubuntu.
+WWLC v1.0 está optimizado para entornos como **Kali Linux** y otras distribuciones basadas en Debian/Ubuntu. Sigue estos pasos para instalar la herramienta.
 
-### Requisitos Previos
+### 1. Requisitos Previos
 Asegúrate de tener instalados `git` y `pip`:
 ```bash
 sudo apt update
 sudo apt install git python3-pip -y
 ```
 
-### Pasos de Instalación
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/Cyberdark-Security/WWLC-Python.git
-   cd WWLC-Python
-   ```
+### 2. Clonar el Repositorio
+Descarga el código fuente:
+```bash
+git clone https://github.com/Cyberdark-Security/WWLC-Python.git
+cd WWLC-Python
+```
 
-2. **Opción 1: Instalación Automatizada con `setup.sh`**  
-   Usa el script proporcionado para crear un entorno virtual e instalar todas las dependencias automáticamente:
-   ```bash
-   chmod +x setup.sh
-   ./setup.sh
-   ```
+### 3. Configurar el Entorno Virtual e Instalar Dependencias
+Usa el script `setup.sh` para crear un entorno virtual (`venv`), instalar las dependencias listadas en `requirements.txt`, y otorgar permisos de ejecución al script principal:
+```bash
+chmod +x wwlc.py
+chmod +x setup.sh
+./setup.sh
+```
+> **Nota**: El script `setup.sh` instala dependencias como `beautifulsoup4`, `pypdf`, `playwright`, `requests`, entre otras. Deberías ver un mensaje como `✅ ¡Instalación completa!` al finalizar. El comando `chmod +x wwlc.py` asegura que el script sea ejecutable.
 
-3. **Opción 2: Instalación Manual**  
-   - Crea un entorno virtual:
-     ```bash
-     python3 -m venv venv
-     source venv/bin/activate
-     ```
-   - Instala las dependencias:
-     ```bash
-     pip install -r requirements.txt
-     ```
-   - Configura los navegadores de Playwright:
-     ```bash
-     playwright install
-     ```
+### 4. Activar el Entorno y Completar la Instalación
+Activa el entorno virtual y configura los navegadores de Playwright:
+```bash
+source venv/bin/activate
+playwright install
+```
+> **Importante**: El comando `playwright install` es obligatorio, ya que descarga una versión de Chromium necesaria para la automatización.
 
-> **Nota**: El comando `playwright install` descarga una versión de Chromium necesaria para la automatización. El script `setup.sh` automatiza la creación del entorno virtual y la instalación de dependencias, pero no ejecuta `playwright install`, por lo que este paso debe realizarse manualmente si no usas el script.
-
-4. **Activar el Entorno Virtual**  
-   Antes de usar WWLC, activa el entorno virtual:
-   ```bash
-   source venv/bin/activate
-   ```
+> **Nota**: Activa el entorno virtual (`source venv/bin/activate`) cada vez que abras una nueva terminal para usar WWLC.
 
 ---
 
@@ -78,7 +67,7 @@ Ejecuta WWLC con el comando:
 
 ### Opciones Disponibles
 
-| Opción | Descripción | Ejemplo |
+| Opción | Descripción | Ejmoblo |
 |--------|-------------|---------|
 | `URL` | **Requerido**. URL del sitio web a analizar. | `./wwlc.py https://example.com` |
 | `-o, --output <archivo>` | Especifica el archivo de salida para la lista de palabras (por defecto: `wordlist.txt`). | `./wwlc.py https://example.com -o mi_diccionario.txt` |
@@ -100,6 +89,45 @@ Para analizar un sitio, extraer correos, metadatos y generar una lista de palabr
 ```bash
 ./wwlc.py https://example.com -e --email-file correos.txt -a --meta-file meta.txt --min-length 5 -o palabras.txt
 ```
+
+---
+
+## 🛠️ Solución de Problemas
+
+Si encuentras errores durante la instalación o ejecución, consulta las soluciones comunes a continuación:
+
+### 1. Dependencias Faltantes de Playwright
+Si al ejecutar `playwright install` ves un error como:
+```
+Host system is missing dependencies to run browsers.
+Missing libraries: libicudata.so.66, libicui18n.so.66, libicuuc.so.66, libjpeg.so.8, libwebp.so.6, libffi.so.7
+```
+Instala las bibliotecas necesarias:
+```bash
+sudo apt install -y libicu66 libjpeg62-turbo libwebp6 libffi7
+```
+Luego, vuelve a ejecutar:
+```bash
+playwright install
+```
+
+### 2. Permiso Denegado al Ejecutar `wwlc.py`
+Si ves un error como `permiso denegado: ./wwlc.py`, verifica que el script tenga permisos de ejecución:
+```bash
+chmod +x wwlc.py
+```
+Asegúrate de estar en el entorno virtual (`source venv/bin/activate`) y prueba de nuevo:
+```bash
+./wwlc.py --help
+```
+
+### 3. Otros Errores
+- **Entorno virtual no activado**: Asegúrate de activar el entorno con `source venv/bin/activate` antes de ejecutar `playwright install` o `wwlc.py`.
+- **Dependencias no instaladas**: Si `setup.sh` falla, verifica que `requirements.txt` esté presente y ejecuta manualmente:
+  ```bash
+  pip install -r requirements.txt
+  ```
+- Para más ayuda, crea un *issue* en el [repositorio de GitHub](https://github.com/Cyberdark-Security/WWLC-Python).
 
 ---
 
