@@ -37,17 +37,35 @@ sudo apt install git python3-pip -y
    cd WWLC-Python
    ```
 
-2. Instala las dependencias:
+2. **Opción 1: Instalación Automatizada con `setup.sh`**  
+   Usa el script proporcionado para crear un entorno virtual e instalar todas las dependencias automáticamente:
    ```bash
-   pip install -r requirements.txt
+   chmod +x setup.sh
+   ./setup.sh
    ```
 
-3. Configura los navegadores de Playwright:
-   ```bash
-   playwright install
-   ```
+3. **Opción 2: Instalación Manual**  
+   - Crea un entorno virtual:
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
+   - Instala las dependencias:
+     ```bash
+     pip install -r requirements.txt
+     ```
+   - Configura los navegadores de Playwright:
+     ```bash
+     playwright install
+     ```
 
-> **Nota**: El comando `playwright install` descarga una versión de Chromium necesaria para la automatización.
+> **Nota**: El comando `playwright install` descarga una versión de Chromium necesaria para la automatización. El script `setup.sh` automatiza la creación del entorno virtual y la instalación de dependencias, pero no ejecuta `playwright install`, por lo que este paso debe realizarse manualmente si no usas el script.
+
+4. **Activar el Entorno Virtual**  
+   Antes de usar WWLC, activa el entorno virtual:
+   ```bash
+   source venv/bin/activate
+   ```
 
 ---
 
