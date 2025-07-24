@@ -1,6 +1,6 @@
 #  WWLC - Web Wordlist Creator (v1.0)
 
-**WWLC (Web Wordlist Creator)** es una herramienta avanzada escrita en **Python** para generar diccionarios de palabras personalizados a partir de sitios web. Diseñada para tareas de reconocimiento, WWLC destaca por su capacidad de extraer contenido dinámico y datos ocultos, superando las limitaciones de los scrapers tradicionales.
+**WWLC (Web Wordlist Creator)** es una herramienta avanzada escrita en **Python** para generar diccionarios de palabras personalizados a partir de sitios web. Diseñada para tareas de reconocimiento, WWLC destaca por su capacidad de extraer contenido dinámico y datos ocultos, superando las limitaciones de los scrapers tradicionales..
 
 ---
 
