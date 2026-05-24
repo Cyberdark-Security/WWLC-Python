@@ -1,112 +1,97 @@
-# 🚀 WWLC - Web Wordlist Creator (v1.1)
+# 🚀 WWLC - Web Wordlist Creator
 
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Security](https://img.shields.io/badge/security-SSRF--Mitigated-orange.svg)
+![Status](https://img.shields.io/badge/status-active-brightgreen.svg)
 
-**WWLC (Web Wordlist Creator)** es una herramienta avanzada de reconocimiento diseñada para generar diccionarios de palabras altamente personalizados a partir de activos web. A diferencia de los scrapers tradicionales, WWLC utiliza automatización de navegador y captura de red para extraer datos de aplicaciones web modernas.
+**WWLC (Web Wordlist Creator)** es una potente herramienta de reconocimiento diseñada para la generación automatizada de diccionarios (wordlists) altamente personalizados. Su propósito es facilitar la recolección de terminología, rutas y datos específicos de activos web para su uso en auditorías de seguridad y pruebas de penetración.
+
+A diferencia de los scrapers estáticos, WWLC emplea automatización de navegador para interactuar con aplicaciones modernas y capturar datos que residen en el DOM dinámico y el tráfico de red.
 
 ---
 
 ## 📋 Tabla de Contenidos
-- [Características Principales](#-características-principales)
-- [Arquitectura de Seguridad](#-arquitectura-de-seguridad)
-- [Instalación Rápida](#-instalación-rápida)
+- [Funcionalidades Principales](#-funcionalidades-principales)
+- [¿Por qué usar WWLC?](#-por-qué-usar-wwlc)
+- [Instalación](#-instalación)
 - [Guía de Uso](#-guía-de-uso)
-- [Opciones Avanzadas](#-opciones-avanzadas)
-- [Ejemplos](#-ejemplos)
-- [Notas y Ética](#-notas-y-ética)
+- [Opciones de Configuración](#-opciones-de-configuración)
+- [Ejemplos de Aplicación](#-ejemplos-de-aplicación)
 
 ---
 
-## ✨ Características Principales
+## ✨ Funcionalidades Principales
 
-- 🌐 **Rastreo Dinámico**: Renderiza JavaScript con **Playwright** para descubrir contenido en SPAs (Single Page Applications).
-- 📡 **Intercepción de APIs**: Captura automáticamente respuestas JSON para extraer términos técnicos y datos ocultos.
-- 📂 **Análisis de Metadatos**: Extrae información de archivos `.pdf` (Autor, Creador) y la convierte en parte del diccionario.
-- 📧 **Extracción de OSINT**: Identifica correos electrónicos en texto, enlaces `mailto:` y respuestas de red.
-- 🧠 **Procesamiento Inteligente**:
-    - División de palabras compuestas (ej: `adminpanel` → `admin`, `panel`).
-    - Generación de variaciones basadas en años (2024, 2025) y sufijos comunes.
-    - Filtrado configurable por longitud de palabra.
-
----
-
-## 🛡️ Arquitectura de Seguridad
-
-La versión 1.1 incluye mejoras críticas:
-- **Mitigación SSRF**: Validación de URLs para prevenir ataques de falsificación de peticiones del lado del servidor, bloqueando IPs locales y privadas.
-- **Logging Profesional**: Sustitución de salidas estándar por un sistema de logs estructurado.
-- **Validación de Esquemas**: Soporte estricto para protocolos `http` y `https`.
+- 🌐 **Navegación Dinámica**: Renderiza JavaScript mediante **Playwright**, permitiendo analizar SPAs y sitios con carga diferida.
+- 📡 **Extracción de Tráfico de Red**: Intercepta respuestas de APIs (JSON) para capturar endpoints, parámetros y datos técnicos ocultos.
+- 📂 **Análisis de Documentos**: Descarga y extrae metadatos de archivos PDF para identificar nombres de autores, software de creación y otros términos clave.
+- 📧 **OSINT integrado**: Identifica automáticamente direcciones de correo electrónico en el contenido visual y en el código fuente.
+- 🧠 **Motor de Procesamiento**:
+    - Limpieza inteligente de ruido y filtrado por longitud.
+    - División de palabras compuestas para maximizar la cobertura del diccionario.
+    - Generación de variaciones predictivas (sufijos numéricos, años actuales).
 
 ---
 
-## 📦 Instalación Rápida
+## 🛠️ ¿Por qué usar WWLC?
 
-WWLC está optimizado para **Kali Linux** y sistemas basados en Debian.
+En escenarios de seguridad, un diccionario genérico suele ser insuficiente. WWLC permite construir una wordlist **específica al contexto** del objetivo, aumentando drásticamente la efectividad en ataques de fuerza bruta, descubrimiento de directorios y pruebas de contraseñas.
+
+---
+
+## 📦 Instalación
+
+Optimizado para entornos de seguridad como **Kali Linux**.
 
 ```bash
 # 1. Clonar el repositorio
 git clone https://github.com/Cyberdark-Security/WWLC-Python.git
 cd WWLC-Python
 
-# 2. Configurar entorno e instalar dependencias
+# 2. Configurar el entorno
 chmod +x setup.sh
 ./setup.sh
 
-# 3. Instalar navegadores de Playwright
+# 3. Preparar el motor de navegación
 source venv/bin/activate
 playwright install chromium
 ```
 
 ---
 
-## 🛠️ Guía de Uso
+## 🚀 Guía de Uso
 
-Activa siempre tu entorno virtual antes de usar la herramienta:
+Asegúrese de activar el entorno virtual antes de cada sesión:
+
 ```bash
 source venv/bin/activate
 ./wwlc.py <URL> [opciones]
 ```
 
-### Opciones Comunes:
+### Opciones de Configuración:
 
-| Argumento | Descripción |
-| :--- | :--- |
-| `URL` | URL objetivo (ej: `https://example.com`) |
-| `-o, --output` | Archivo de salida para la wordlist (por defecto: `wordlist.txt`) |
-| `-e, --email` | Activa la extracción de correos electrónicos |
-| `-a, --meta` | Activa la extracción de metadatos de archivos PDF |
-| `--min-length` | Longitud mínima de palabra (def: 3) |
-| `--max-length` | Longitud máxima de palabra (def: 20) |
+| Icono | Argumento | Descripción |
+| :---: | :--- | :--- |
+| 🎯 | `URL` | Objetivo principal a analizar |
+| 💾 | `-o, --output` | Nombre del archivo de salida |
+| ✉️ | `-e, --email` | Habilitar extracción de correos |
+| 📑 | `-a, --meta` | Procesar metadatos de documentos PDF |
+| 📏 | `--min-length` | Definir longitud mínima de palabras |
 
 ---
 
-## 🚀 Ejemplos
+## 💡 Ejemplos de Aplicación
 
-**Generación básica:**
+**Generación de diccionario enfocado en APIs:**
 ```bash
-./wwlc.py https://target-app.com -o target_wordlist.txt
+./wwlc.py https://api.target.com -o api_keys.txt
 ```
 
-**Reconocimiento Full (Correos + Metadatos + Filtros):**
+**Reconocimiento profundo con metadatos y OSINT:**
 ```bash
-./wwlc.py https://target-app.com -e --email-file mails.txt -a --meta-file meta.txt --min-length 5
+./wwlc.py https://target.com -e --email-file mails.txt -a --meta-file pdf_meta.txt
 ```
 
 ---
 
-## ⚠️ Notas y Ética
-
-- **Uso Autorizado**: Esta herramienta debe utilizarse únicamente en entornos donde se posea permiso explícito para realizar pruebas de seguridad.
-- **Responsabilidad**: El equipo de desarrollo no se hace responsable del mal uso de WWLC.
-
----
-
-## 🤝 Contribuciones y Contacto
-
-¿Tienes ideas para mejorar WWLC?
-1. Abre un **Issue** para discutir cambios.
-2. Envía un **Pull Request** con tus mejoras.
-
-Desarrollado por **Cyberdark Security**.
+**Hecho por Cyberdark by Whoami-labs.com**

@@ -9,7 +9,7 @@ from urllib.parse import urljoin, urlparse
 from typing import Set, List, Optional
 import socket
 import ipaddress
-import requests # <-- Re-añadimos requests
+import requests
 
 # Configuración de logging
 logging.basicConfig(
