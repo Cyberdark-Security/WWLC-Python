@@ -1,4 +1,4 @@
-requests
-beautifulsoup4
-pypdf
-playwright
+requests>=2.32.0
+beautifulsoup4>=4.12.0
+pypdf>=4.2.0
+playwright>=1.48.0
